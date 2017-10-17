@@ -7,11 +7,9 @@ package interfere;
 
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,6 +29,9 @@ public class Interfere extends JPanel  {
     private JLabel hdrLabel;
     private JLabel statusLabel;
     private Canvas cnv;
+    private double omega1 = 13 ;
+    private double omega2 =  16;
+    private  int poc=0;
     
     public static void main(String[] args) {
    //     JFrame fr = new JFrame();
@@ -81,6 +82,15 @@ public class Interfere extends JPanel  {
                     poc++;
                     repaint();
                 }
+                if (e.getButton() == MouseEvent.BUTTON2) {
+                    omega1 -= 0.5;
+                    repaint();
+                }
+              if (e.getButton() == MouseEvent.BUTTON3) {
+                    omega1 += 0.5;
+                    repaint();
+                }
+                
           }          
 
           @Override
@@ -95,7 +105,6 @@ public class Interfere extends JPanel  {
     
     }
    
-    private  int poc=0;
   
     @Override
     public void paintComponent(Graphics g)
@@ -131,8 +140,7 @@ public class Interfere extends JPanel  {
         int fwidth = fr.getContentPane().getWidth();
         double stepVert = 3 ;
         double stepHz = 4 ;
-   //  setSize(600,400);
-        int rx = 0;
+         int rx = 0;
         while (rx<fwidth)
         {
             g.drawLine(0, 0, rx,fhight);
@@ -167,10 +175,7 @@ public class Interfere extends JPanel  {
         final double stepFi = 0.0005;
         int fhight = fr.getContentPane().getHeight();
         int fwidth = fr.getContentPane().getWidth();
-        double omega1 = 13 ;
-        double omega2 =  16;
         double fimax = omega1*omega2*Math.PI/10;
-   //  setSize(600,400);
         double fi = 0;
         int x,y;
         
